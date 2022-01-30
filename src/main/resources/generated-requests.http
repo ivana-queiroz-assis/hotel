@@ -1,0 +1,28 @@
+### Check availability of the room with ID 1
+GET http://localhost:8080/alten-hotel/api/room/1?startDate=2022-02-22&endDate=2022-02-23
+
+
+### Place a reservation in the room with ID 1 passing the desired date: start and end dates
+POST http://localhost:8080/alten-hotel/api/room/1/book
+Content-Type: application/json
+
+{
+  "startDate": "2022-02-19",
+  "endDate": "2022-02-21"
+}
+
+
+### Edit the reservation with ID 3
+
+PUT http://localhost:8080/alten-hotel/api/booking/3
+Content-Type: application/json
+
+{
+  "startDate": "2022-02-03",
+  "endDate": "2022-02-04"
+}
+
+### Delete the reservation with ID 4
+
+DELETE http://localhost:8080/alten-hotel/api/booking/4
+

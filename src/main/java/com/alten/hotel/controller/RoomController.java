@@ -1,8 +1,8 @@
 package com.alten.hotel.controller;
 
 import com.alten.hotel.model.dto.BookingDto;
-import com.alten.hotel.model.response.GenericResponse;
-import com.alten.hotel.model.response.RoomResponse;
+import com.alten.hotel.model.dto.RoomDto;
+import com.alten.hotel.model.generic.GenericResponse;
 import com.alten.hotel.service.BookingService;
 import com.alten.hotel.service.RoomService;
 import com.alten.hotel.util.AppConstants;
@@ -32,9 +32,9 @@ public class RoomController {
     }
 
     @GetMapping("/{id}")
-    public GenericResponse<RoomResponse> getRoom(@PathVariable("id") Long id, @RequestParam String startDate, @RequestParam String endDate) {
-        RoomResponse result = this.roomService.checkAvailability(id, LocalDate.parse(startDate), LocalDate.parse(endDate));
-        return new GenericResponse<>(AppConstants.SUCCESS, String.valueOf(HttpStatus.CREATED), AppConstants.OK, result);
+    public GenericResponse<RoomDto> getRoom(@PathVariable("id") Long id, @RequestParam String startDate, @RequestParam String endDate) {
+        RoomDto result = this.roomService.checkAvailability(id, LocalDate.parse(startDate), LocalDate.parse(endDate));
+        return new GenericResponse<>(AppConstants.SUCCESS, String.valueOf(HttpStatus.OK), AppConstants.OK, result);
     }
 
 }

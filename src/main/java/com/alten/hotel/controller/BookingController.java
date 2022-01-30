@@ -1,7 +1,7 @@
 package com.alten.hotel.controller;
 
 import com.alten.hotel.model.dto.BookingDto;
-import com.alten.hotel.model.response.GenericResponse;
+import com.alten.hotel.model.generic.GenericResponse;
 import com.alten.hotel.service.BookingService;
 import com.alten.hotel.util.AppConstants;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.alten.hotel.service;
 
-import com.alten.hotel.model.response.RoomResponse;
+import com.alten.hotel.model.dto.RoomDto;
 import com.alten.hotel.repository.RoomBookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +17,8 @@ public class RoomService {
         this.roomBookedRepository = roomBookedRepository;
     }
 
-    public RoomResponse checkAvailability(Long id, LocalDate startDate, LocalDate endDate){
+    public RoomDto checkAvailability(Long id, LocalDate startDate, LocalDate endDate){
         Boolean isAvailable =roomBookedRepository.countRoomBookedEntityByRoomEntityIdAndStartDateIsBeforeAndEndDateIsAfter(id, endDate, startDate) > 0 ? false: true;
-        return RoomResponse.builder().isAvailable(isAvailable).build();
+        return RoomDto.builder().isAvailable(isAvailable).build();
     }
 }

@@ -1,4 +1,4 @@
-package com.alten.hotel.model.response;
+package com.alten.hotel.model.dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -7,6 +7,6 @@ import java.io.Serializable;
 
 @Builder
 @Data
-public class RoomResponse implements Serializable {
+public class RoomDto implements Serializable {
     private Boolean isAvailable;
 }

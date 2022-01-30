@@ -1,4 +1,4 @@
-package com.alten.hotel.model.response;
+package com.alten.hotel.model.generic;
 
 import java.io.Serializable;
 

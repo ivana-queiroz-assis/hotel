@@ -1,5 +1,6 @@
 package com.alten.hotel.service;
 
+import com.alten.hotel.exception.BookingNotFoundException;
 import com.alten.hotel.mapper.BookingMapper;
 import com.alten.hotel.model.dto.BookingDto;
 import com.alten.hotel.model.entity.BookingEntity;
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+
+import static com.alten.hotel.util.AppConstants.MSG_BOOKING_NOT_FOUND;
 
 @Service
 public class BookingService {
@@ -35,13 +38,16 @@ public class BookingService {
         this.bookingMapper = bookingMapper;
     }
 
-    public BookingDto create(Long id, BookingDto bookingDto){
+    public BookingDto create(Long idRoom, BookingDto bookingDto){
         dateReservationValidation.validateDate(bookingDto);
-        return bookingMapper.toBookingDto(placeReservation(id, bookingDto));
+        return bookingMapper.toBookingDto(placeReservation(idRoom, bookingDto));
     }
 
     public void delete(Long id){
         RoomBookingEntity roomBookingEntity = roomBookingRepository.findByBookingEntityId(id);
+        if (roomBookingEntity == null){
+            throw new BookingNotFoundException(MSG_BOOKING_NOT_FOUND);
+        }
         roomBookingRepository.delete(roomBookingEntity);
         bookingRepository.deleteById(id);
     }

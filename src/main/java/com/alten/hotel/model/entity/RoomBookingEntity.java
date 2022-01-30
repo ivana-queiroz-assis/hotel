@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "ROOM_BOOKED")
+@Table(name = "ROOM_BOOKING")
 @Data
 @Builder
 @AllArgsConstructor

@@ -1,8 +1,9 @@
 package com.alten.hotel.config;
 
+import com.alten.hotel.exception.BookingNotFoundException;
 import com.alten.hotel.exception.ConflictBookingException;
 import com.alten.hotel.exception.DateBookingException;
-import com.alten.hotel.model.response.GenericResponse;
+import com.alten.hotel.model.generic.GenericResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -12,8 +13,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({DateBookingException.class, ConflictBookingException.class})
-    public ResponseEntity<Object> handleExceptions(DateBookingException exception) {
+    @ExceptionHandler({DateBookingException.class, ConflictBookingException.class, BookingNotFoundException.class})
+    public ResponseEntity<Object> handleExceptions(RuntimeException exception) {
         GenericResponse response = new GenericResponse();
         response.setMessage(exception.getMessage());
         response.setStatus(String.valueOf(HttpStatus.BAD_REQUEST.value()));

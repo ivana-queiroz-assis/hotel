@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
-import static com.alten.hotel.util.AppConstants.MSG_BOOK_ROOM_ALREADY_RESERVED;
+import static com.alten.hotel.util.AppConstants.MSG_BOOKING_ROOM_ALREADY_RESERVED;
 
 @Service
 public class ConflitsReservationService {
@@ -21,7 +21,7 @@ public class ConflitsReservationService {
     public void checkConflicts(RoomEntity roomEntity, LocalDate startDate, LocalDate endDate){
         Integer numberOfConflicts =  roomBookedRepository.countRoomBookedEntityByRoomEntityIdAndStartDateIsBeforeAndEndDateIsAfter(roomEntity.getId(), endDate, startDate);
         if (numberOfConflicts> 0){
-            throw new ConflictBookingException(MSG_BOOK_ROOM_ALREADY_RESERVED);
+            throw new ConflictBookingException(MSG_BOOKING_ROOM_ALREADY_RESERVED);
         }
     }
 }
