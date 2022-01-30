@@ -33,6 +33,9 @@ This validations was chained in the following class:
 
 ### Mutation test
 
+To run the test: 'mvn clean install pitest:mutationCoverage'
+
+Will produce the report in the file://target/pit-reports/202201301736/index.html
 
 ![Result](src/main/resources/static/alter-pit.png)
 
